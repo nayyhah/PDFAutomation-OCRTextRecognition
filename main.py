@@ -5,7 +5,7 @@
 4. Upload the result in MongoDB
 '''
 
-from pdf2image import convert_from_path
+import pdf2image
 import cv2
 from parsing import parse
 import pymongo
@@ -43,36 +43,36 @@ def main():
 	# ID of template used by user
 	templateID = int(sys.argv[5])
 
-	#convert link into image
-	response = requests.get(url)
-	image = Image.open(BytesIO(response.content))
-	filename = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
 	#get template details from dictionary
 	template = cv2.imread(template_dict[templateID][0])
 	className = template_dict[templateID][1]
 
 
+	#convert link into image
+	response = requests.get(url)
+
+
 	if( filetype.find("/pdf") == -1 ):
 		'''If input file is PDF, Conversion of pdf into image'''
-		#write code here
+		image = Image.open(BytesIO(response.content))
+	else:
+		image = pdf2image.convert_from_bytes(response.content)[0]
 
+		
+	filename = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 	
 
 	''' Image Alignment, Watermark Removal, Bounding Box, Text extraction '''
-	parse(filename, template, className)
-
-	# f = parse(filename, template, className)
-
-	f = open('finaloutput.json')
-	finaloutput = json.load(f)
+	finaloutput = json.loads(parse(filename, template, className))
+	
 
 	#Upload the json file into mongo
 	mongo_url = os.getenv('MONGO_URL',default="mongodb+srv://codemonk:database12qw@cluster0.0vur0.mongodb.net/pass_test?retryWrites=true&w=majority")
 	client = pymongo.MongoClient(mongo_url)
 	queryCollection =  client['pass_test']['queries']
-	query = queryCollection.find_one_and_update({"_id":ObjectId(str(queryID))},{"$set":{f"parsed.{documentID}.document":finaloutput,f"parsed.{documentID}.isparsed":True}})
-	
+	queryCollection.find_one_and_update({"_id":ObjectId(str(queryID))},{"$set":{f"parsed.{documentID}.document":finaloutput,f"parsed.{documentID}.isparsed":True}})
+
 
 if __name__ == '__main__':
 	main()

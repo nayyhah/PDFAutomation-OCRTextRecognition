@@ -91,6 +91,7 @@ def parse(image, template, className):
 
     # loop over the results fix size of image
     for (locID, result) in results.items():
+        # unpack the result tuple
         (text, loc) = result
         text = "{}\n\n".format(text)
         dictionary[loc["id"]] = text
@@ -101,9 +102,6 @@ def parse(image, template, className):
         dictionary[entries] = dictionary[entries].split('\n')
         entry = [ele for ele in dictionary[entries] if ele.strip(" ")]
         dictionary[entries] = entry
-        
 
-    with open('output1.txt', 'w') as convert_file:
-        convert_file.write(json.dumps(dictionary))
+    return(Object.textExtraction(dictionary))
 
-    Object.textExtraction(dictionary)
