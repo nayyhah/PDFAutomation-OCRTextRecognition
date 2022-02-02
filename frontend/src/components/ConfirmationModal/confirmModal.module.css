@@ -1,0 +1,30 @@
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  z-index: 9999;
+}
+
+.modal {
+  margin: auto;
+  min-width: 450px;
+  height: 280px;
+  background: white;
+  border-radius: 0.375rem;
+  animation: fadeInDown 0.8s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

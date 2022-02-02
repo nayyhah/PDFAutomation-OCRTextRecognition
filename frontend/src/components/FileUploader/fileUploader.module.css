@@ -1,0 +1,42 @@
+input[type="file"].custom {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+  background-color: #ffff;
+}
+.modal {
+  position: absolute;
+  width: 22rem;
+  z-index: 9999;
+  bottom: 40px;
+  background: white;
+  border-radius: 5px;
+  animation: fadeInDown 0.8s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  left: 600px;
+}
+.modalWrapper {
+  /* position: relative; */
+  /* top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,20 @@
+.circle {
+  background: conic-gradient(from 220deg, #00342d 0deg, #0b917f 90deg, #075248);
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  border-radius: 100%;
+  border: 4px solid #e8fffc;
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  background-color: #fafafa;
+  font-weight: 500;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,48 @@
+/* Demo */
+/* body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#ecf0f1, #fff);
+} */
+
+/* Animation */
+@-webkit-keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Variables */
+/* Loading Icon */
+.loading {
+  width: 20px;
+  height: 20px;
+  align-self: flex-end;
+  margin-bottom: 0.25rem;
+}
+.loading__ring {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.loading__ring:first-child {
+  transform: skew(30deg, 20deg);
+}
+.loading__ring:last-child {
+  transform: skew(-30deg, -20deg) scale(-1, 1);
+}
+.loading__ring:last-child svg {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+.loading__ring svg {
+  -webkit-animation: rotate 1s linear infinite;
+  animation: rotate 1s linear infinite;
+  fill: #007abf;
+}

@@ -1,0 +1,66 @@
+{
+  "From": {
+    "Tax ID/EIN/VAT No.": "",
+    "address": "Kotis Design 300 Distribution Circle Ste B Fairfield, OH 45014 United States \f ",
+    "Contact Name": "Kotis Design",
+    "Phone": "2064661800"
+  },
+  "SecondBox": {
+    "Waybill Number": "1AA5259YP8R",
+    "address": "\f ",
+    "Shipment ID": "1AA5259YP8R",
+    "Date": "28/DEC/2021",
+    "Invoice No": "Order3639620",
+    "PO No": "",
+    "Terms of Sale (Incoterm)": "DDP",
+    "Reason for Export": "GIFT"
+  },
+  "ShipTo": {
+    "Tax ID/VAT No.": "",
+    "address": "Neha Jha IIT Girls Hostel, D-Block, Bhubaneswar 751029 India \f ",
+    "Contact Name": "Neha Jha (Student ID",
+    "Gothapatna,PO": "MALIPADA,DIST-KHURDA",
+    "Phone": "9891665791"
+  },
+  "SoldTo": {
+    "address": "SOLD TO INFORMATION Neha Jha T Girls Hostel, D-Block, Bhubaneswar 751029 India \f ",
+    "Tax ID/VAT No.": "",
+    "Contact Name": "Neha Jha (Student ID",
+    "Gothapatna,PO": "MALIPADA,DIST-KHURDA",
+    "Phone": "9891665791"
+  },
+  "BillingInfo": {
+    "Invoice Line Total": "5.33",
+    "address": "\f ",
+    "Discount/Rebate": "0.00",
+    "Invoice Sub-Total": "5.33",
+    "Freight": "0.00",
+    "Insurance": "0.00",
+    "Other": "0.00",
+    "Total Invoice Amount": "5.33",
+    "Total Number of Packages": "1 Currency"
+  },
+  "Product": {
+    "4820.10.2010": {
+      "harmCode": "4820.10.2010",
+      "uniqueVal": "1.00",
+      "totalVal": "1.00",
+      "units": "1 PKG",
+      "description": " Recruiting Notebook (dot  us pages) / Part No. 79299-28 79299-28 "
+    },
+    "4908.90.0000": {
+      "harmCode": "4908.90.0000",
+      "uniqueVal": "1.00",
+      "totalVal": "1.00",
+      "units": "1 PKG",
+      "description": " Campus Recruiting Code with  us HRT Sticker / Part No. 79299-38 79299-38 "
+    },
+    "7117.19.1500": {
+      "harmCode": "7117.19.1500",
+      "uniqueVal": "1.56",
+      "totalVal": "1.56",
+      "units": "1 PKG",
+      "description": " Woman at HRT Pin/ Part No.  CN 79299-245 79299-245 \f "
+    }
+  }
+}
