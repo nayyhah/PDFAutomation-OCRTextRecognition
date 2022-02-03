@@ -1,0 +1,10 @@
+numpy==1.22.1
+imutils==0.5.4
+pdf2image==1.16.0
+Pillow==9.0.0
+pymongo==3.10.1
+pytesseract==0.3.8
+requests==2.22.0
+opencv-python==4.5.5.62
+dnspython==2.2.0
+# python-poppler==0.2.2
