@@ -68,7 +68,7 @@ def main():
 	
 
 	#Upload the json file into mongo
-	mongo_url = os.getenv('MONGO_URL',default="mongodb+srv://codemonk:database12qw@cluster0.0vur0.mongodb.net/pass_test?retryWrites=true&w=majority")
+	mongo_url = os.getenv('MONGO_URL',default="")
 	client = pymongo.MongoClient(mongo_url)
 	queryCollection =  client['pass_test']['queries']
 	queryCollection.find_one_and_update({"_id":ObjectId(str(queryID))},{"$set":{f"parsed.{documentID}.document":finaloutput,f"parsed.{documentID}.isparsed":True}})

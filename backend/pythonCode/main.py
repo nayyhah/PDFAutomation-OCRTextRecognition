@@ -21,59 +21,43 @@ from bson.objectid import ObjectId
 '''
 Dictinary Storing Template Deatils
 '''
-
-
-# print(os.getenv('TESSDATA_PREFIX'))
-
-# def main():
-
-'''
-Input taken from backend
-'''
-# queryID is used to upload json file to mongo
-# queryID = sys.argv[1] 
-# documentID is the number when user passes multiple docs at once
-# documentID = sys.argv[2]
-# URL of image hosted in cloudinary
-url = sys.argv[1] #url of image
-# type of applicatino ie, "applications/pdf" or "image/jpg"
-filetype = sys.argv[2]
-# ID of template used by user
-templateID = int(sys.argv[3])
-
-
-# print(url)
-
-#convert link into image
-response = requests.get(url)
-
 template_dict = {0 : ["template1.jpg","template1"],1 : ["template2.png","template2"]}
 
-if( filetype.find("/pdf") == -1 ):
-	'''If input file is PDF, Conversion of pdf into image'''
-	image = Image.open(BytesIO(response.content))
-else:
-	image = pdf2image.convert_from_bytes(response.content)[0]
+def main():
 
+	'''
+	Input taken from backend
+	'''
+	url = sys.argv[1] #url of image
+	# type of applicatino ie, "applications/pdf" or "image/jpg"
+	filetype = sys.argv[2]
+	# ID of template used by user
+	templateID = int(sys.argv[3])
+
+	#convert link into image
+	response = requests.get(url)
+
+	if( filetype.find("/pdf") == -1 ):
+		'''If input file is PDF, Conversion of pdf into image'''
+		image = Image.open(BytesIO(response.content))
+	else:
+		image = pdf2image.convert_from_bytes(response.content)[0]
+
+		
+	filename = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+	# cv2.imwrite("test.jpg",filename)
+
+	#get template details from dictionary
+	template = cv2.imread(template_dict[templateID][0])
+	className = template_dict[templateID][1]
 	
-filename = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-# cv2.imwrite("test.jpg",filename)
 
-#get template details from dictionary
-template = cv2.imread(template_dict[templateID][0])
-className = template_dict[templateID][1]
+	''' Image Alignment, Watermark Removal, Bounding Box, Text extraction '''
+	finaloutput = json.loads(parse(filename, template, className))
 
-
-''' Image Alignment, Watermark Removal, Bounding Box, Text extraction '''
-finaloutput = parse(filename, template, className)
-
-print(finaloutput)
-#Upload the json file into mongo
-	# mongo_url = os.getenv('MONGO_URL',default="mongodb+srv://codemonk:database12qw@cluster0.0vur0.mongodb.net/pass_test?retryWrites=true&w=majority")
-	# client = pymongo.MongoClient(mongo_url)
-	# queryCollection =  client['pass_test']['queries']
-	# queryCollection.find_one_and_update({"_id":ObjectId(str(queryID))},{"$set":{f"parsed.{documentID}.document":finaloutput,f"parsed.{documentID}.isparsed":True}})
+	print(finaloutput)
 
 
-# if __name__ == '__main__':
-	# main()
+
+if __name__ == '__main__':
+	main()
