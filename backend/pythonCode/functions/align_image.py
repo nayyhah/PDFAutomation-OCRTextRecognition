@@ -4,7 +4,7 @@ import imutils
 import cv2
 
 def align_img(img, template, maxFeatures=500, keepPercent=0.2, debug=False):
-# convert both the input image and template to grayscale
+    # convert both the input image and template to grayscale
     (height,width) = template.shape[:2]
     image = imutils.resize(img,width,height)
     imageGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

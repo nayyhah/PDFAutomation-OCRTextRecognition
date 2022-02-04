@@ -8,15 +8,13 @@ Program to parse the image :
 5. Send back the result of textExtraction() to main
 
 '''
-from collections import namedtuple
 import pytesseract
-import imutils
 import cv2
-import json
 from functions.align_image import align_img
 from functions.removewatermark import removeWatermark
 import templates.template
 
+# pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 
 def cleanup_text(text):
     #Removes non-ASCII text using OpenCV
@@ -52,7 +50,13 @@ def parse(image, template, className):
 
         # OCR the ROI using Tesseract
         rgb = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB)
-        text = pytesseract.image_to_string(rgb, config='--oem 3 --psm 6' )
+
+
+        if className == 'template2':
+            text = pytesseract.image_to_string(rgb, config='--oem 3 --psm 4')
+        else:
+            text = pytesseract.image_to_string(rgb, config='--oem 3 --psm 6' )
+
 
         # break the text into lines and loop over them
         for line in text.split("\n"):

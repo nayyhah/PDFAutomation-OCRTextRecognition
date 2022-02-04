@@ -35,6 +35,7 @@ class template1:
     def textExtraction(self,dictionary = dict()):
         new_dict = dict()
         for entries in dictionary:
+            
             if entries == 'Product':
                 new_dict[entries] = self.tableExtraction(dictionary[entries])
             

@@ -1,10 +1,10 @@
-from turtle import width
+
 import numpy as np
 import imutils
 import cv2
 
 def align_img(img, template, maxFeatures=500, keepPercent=0.2, debug=False):
-# convert both the input image and template to grayscale
+    # convert both the input image and template to grayscale
     (height,width) = template.shape[:2]
     image = imutils.resize(img,width,height)
     imageGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -36,7 +36,6 @@ def align_img(img, template, maxFeatures=500, keepPercent=0.2, debug=False):
     
     (h,w) = template.shape[:2]
 
-    cv2.imwrite("Image.jpg",img)
     (image_h,image_w) = image.shape[:2]
     (img_h,img_w) = img.shape[:2]
 
